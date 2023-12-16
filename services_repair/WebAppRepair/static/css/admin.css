@@ -1,0 +1,124 @@
+#header,.theme-toggle{
+    background: linear-gradient(#cbfdca, #e8ffe8);
+    color: #7f510b;
+}
+
+.theme-toggle svg.theme-icon-when-auto, .theme-toggle svg.theme-icon-when-dark, .theme-toggle svg.theme-icon-when-light {
+    fill: var(--header-link-color);
+    color: #cbfdca;
+}
+
+
+
+#content {
+    font-family: 'Arimo', sans-serif;
+}
+
+.title-decoration{
+    background-color: #5e775d;
+}
+
+.module caption {
+    font-size: 0.8rem;
+    background-color: #98cacb;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #cbfdfd;
+}
+
+a:link, a:visited {
+    color: #614922;
+    text-decoration: none;
+    transition: color 0.15s, background 0.15s;
+}
+
+table {
+    border-collapse: collapse;
+    border-color: #f4e9d7;;
+}
+
+div.breadcrumbs {
+    background: #006534;
+    padding: 10px 40px;
+    border: none;
+    color: var(--breadcrumbs-fg);
+    text-align: left;
+}
+
+div.breadcrumbs a {
+    color: var(--breadcrumbs-link-fg);
+}
+
+.module h2{
+    font-size: 0.75rem;
+    font-family: 'Arimo', sans-serif;
+    font-weight: 300;
+    background: #98cacb;
+    color: #006534;
+}
+
+a.section:link, a.section:visited {
+    color: #006534;
+    text-decoration: none;
+    font-style: inherit;
+}
+
+.button.default, input[type=submit].default, .submit-row input.default {
+    border: none;
+    font-family: 'Arimo', sans-serif;
+    font-weight: 400;
+    background: #fccac9;
+}
+
+.button, input[type=submit], input[type=button], .submit-row input, a.button {
+    background: #cbfdfd;
+    padding: 10px 15px;
+    font-family: 'Arimo', sans-serif;
+    border: none;
+    border-radius: 4px;
+    color: var(--button-fg);
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+body{
+    font-family: 'Arimo', sans-serif;
+
+}
+
+.selector-chosen h2 {
+    background: #bf9c64;
+    color: var(--header-link-color);
+}
+
+#branding h1 a:link, #branding h1 a:visited {
+    color: #5e775d;
+    font-family: 'Choco cooky', sans-serif;
+    font-style: initial;
+    font-size: 2.75rem;
+    vertical-align: hanging;
+}
+
+#header a:link, #header a:visited, #logout-form button {
+    color: #5e775d;
+}
+
+div.breadcrumbs a {
+    color: var(--breadcrumbs-link-fg);
+}
+
+#user-tools, #logout-form button {
+    padding: 0;
+    font-weight: 300;
+    font-family: 'Choco cooky', sans-serif;
+    color: #5e775d;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+#content-related {
+    background: #fccac9;
+}
+

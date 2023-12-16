@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css?family=Kaushan+Script|Libre+Baskerville');
+body {
+  margin: 0;
+  background-image: url(../images/фон.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  backdrop-filter: blur(5px);
+  pointer-events: all;
+  display: block;
+
+}
+
+nav {
+  background: #e8e8e8;
+  text-align: center;
+  padding: 0px;
+}
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+}
+nav a {
+  text-decoration: none;
+  display: block;
+  color: #222;
+}
+
+.topmenu{
+  background: #ffffff;
+}
+.topmenu > li {
+  display: inline-block;
+  position: relative;
+}
+.topmenu > li > a {
+  position: relative;
+  padding-top: 10px;
+  padding: 10px 15px;
+  padding-bottom: 10px;
+  font-family: "Segoe UI";
+  font-size: 0.75em;
+  line-height: 1;
+  letter-spacing: 3px;
+}
+.topmenu > li > a:before {
+  content: "";
+  position: absolute;
+  z-index: 5;
+  left: 50%;
+  top: 100%;
+  width: 10px;
+  height: 10px;
+  background: #0e0e0e;
+  border-radius: 50%;
+  transform: translate(-50%, 20px);
+  opacity: 0;
+  transition: .3s;
+}
+
+.submenu {
+  position: absolute;
+  z-index: 4;
+  left: 50%;
+  top: 100%;
+  width: 150px;
+  padding: 15px 0 15px;
+  margin-top: 5px;
+  background: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 0 30px rgba(0,0,0,.2);
+  box-sizing: border-box;
+  visibility: hidden;
+  opacity: 0;
+  transform: translate(-50%, 20px);
+  transition: .3s;
+}
+.topmenu > li:hover .submenu {
+  visibility: visible;
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+.submenu a {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 11px;
+  letter-spacing: 1px;
+  padding: 5px 10px;
+  transition: .3s linear;
+}
+.submenu a:hover {background: #0e0e0e;}
+
+.header_font {font-size: 1.5rem;}
+
+#logo {
+  background: #f0a1a1;
+  text-align: center;
+  padding: 5px;
+}
+
+a:hover {
+  color: #f6c1c1;
+}
+

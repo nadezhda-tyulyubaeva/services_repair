@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+
+<div>
+    <div id="column-center" class="content-registr">
+        <div>
+            <h3 align="left">Личные данные</h3>
+            <p><a href="" font-size="9px">[Изменить]</a></p>
+
+        </div>
+        <hr>
+        <div>
+            {% for my_profile in my_quest %}
+            <img src="
+                                {% if my_profile.image %}{{ my_profile.image.url }}{% else %}{% static 'images/no_images.png' %}{% endif %}"
+                 width="60%"></div>
+        {% endfor %}
+        <p> Имя: {{ my_profile.first_name }} </p>
+        <p> Фамилия: {{ my_profile.last_name }}</p>
+
+        <h3 align="left">Пользовательские данные <p><a href="" font-size="12px">[Изменить]</a></p></h3>
+        <hr>
+        <p>Имя пользователя: {{ my_profile.username }}</p>
+        <p> Последний вход: {{ my_profile.last_login }}</p>
+        <p>Дата регистрации: {{ my_profile.date_joined }}</p>
+
+
+    </div>
+
+</div>
+
+{% endblock %}

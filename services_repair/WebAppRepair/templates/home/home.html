@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+<div id="column-1" class="content">
+    {% if not user.is_authenticated %}
+
+    {% endif %}
+    {% if user.is_authenticated %}
+    <li><a href="my_order/">Мои заказы</a></li>
+    <li><a href="profile/">Личный кабинет: {{ user.first_name }}</a></li>
+    <li><a href="{% url 'logout' %}? next=" {{ request.path }}">Выход</a></li>
+    {% else %}
+    <h1>Вход</h1>
+    <form method="post" action=''>
+        {% csrf_token %}
+        {{ form.as_p  }}
+        <button type="submit">Войти</button>
+    </form>
+    <p></p>
+    <p>Еще не зарегистрированы? <a class="text" href="/registr/">Зарегистрироваться</a></p>
+    {% endif %}
+</div>
+
+<div id="column-2" class="content">
+    <h1>Гардероб - ваше надежное ателье по ремонту одежды!</h1>
+    {% include "home/slider.html" %}
+
+</div>
+<div id="column-3" class="content">
+    <p>hhh</p>
+
+</div>
+
+
+{% endblock %}

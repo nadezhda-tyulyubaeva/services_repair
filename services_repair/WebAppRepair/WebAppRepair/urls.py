@@ -16,7 +16,22 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from Repair.views import *
+from django.urls import include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    path('', home, name='home'),
+
+    path('accounts/', include('django.contrib.auth.urls')),
+
+    path('registr/', registrat),
+
+    path('profile/', profiles, name='profile'),
+
+    path('captcha/', include('captcha.urls')),
+
+
+
 ]
