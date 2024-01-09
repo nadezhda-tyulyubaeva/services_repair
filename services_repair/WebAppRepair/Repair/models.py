@@ -205,6 +205,9 @@ class Product_composition(models.Model):
 
 class Stock(models.Model):
     name = models.CharField(max_length=60, verbose_name='Название')
+    description = models.CharField(max_length=255, verbose_name='Описание')
+    slug = models.SlugField(max_length=200, db_index=True, verbose_name="URL-продукта", allow_unicode=True)
+    image = models.ImageField(upload_to="images", blank=True, verbose_name='Изображение')
     discount = models.IntegerField(blank=True, null=True, verbose_name='Процент скидки')
     start = models.DateField('Дата начала действия')
     end = models.DateField('Дата окончания действия')

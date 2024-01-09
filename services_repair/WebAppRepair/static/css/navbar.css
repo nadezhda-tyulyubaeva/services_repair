@@ -6,7 +6,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
-  backdrop-filter: blur(5px);
+
   pointer-events: all;
   display: block;
 
@@ -42,9 +42,9 @@ nav a {
   padding: 10px 15px;
   padding-bottom: 10px;
   font-family: "Segoe UI";
-  font-size: 0.75em;
+  font-size: 0.85em;
   line-height: 1;
-  letter-spacing: 3px;
+  letter-spacing: 1px;
 }
 .topmenu > li > a:before {
   content: "";
@@ -101,6 +101,6 @@ nav a {
 }
 
 a:hover {
-  color: #f6c1c1;
+  color: #f0a1a1;
 }
 

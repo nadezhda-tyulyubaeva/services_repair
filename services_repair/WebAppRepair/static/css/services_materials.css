@@ -1,0 +1,30 @@
+#column-right {
+    width: 48%;
+    background: #ffffff;
+    float: left;
+    min-height: auto;
+    padding: 20px;
+    margin: 15px;
+    display: block;
+}
+
+#column-left {
+    background: #ffffff;
+    width: 48%;
+    min-height: auto;
+    float: left;
+    padding: 20px;
+    margin: 10px;
+
+}
+
+.content_s_m {
+    background: #ffffff; /* Цвет фона */
+    color: #0e0e0e; /* Цвет текста */
+    padding: 5px; /* Поля вокруг текста */
+    border-radius: 25px; /* Уголки */
+    margin: 20px;
+    text-align: center;
+    font-family: "Segoe UI";
+    display: block;
+}

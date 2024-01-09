@@ -6,18 +6,37 @@
 
 
 <div id="column-1" class="content">
-    {% if not user.is_authenticated %}
-
-    {% endif %}
     {% if user.is_authenticated %}
-    <li><a href="my_order/">Мои заказы</a></li>
-    <li><a href="profile/">Личный кабинет: {{ user.first_name }}</a></li>
-    <li><a href="{% url 'logout' %}? next=" {{ request.path }}">Выход</a></li>
+    {% if user_photo %}
+    <div>
+        <div class="col2">
+            <a href="{{ i.get_absolute_url }}">
+                <img
+                        src="{% if user_photo %}{{ user_photo.url }}{% else %}{% static 'images/no_images.png' %}{% endif %}"
+                        width="60px"></a>
+            {% endif %}
+        </div>
+        <div class="col2">
+            <p align="left">Здравствуйте, <a href="profile/">{{ user.first_name }}</a>!</p>
+
+        </div>
+    </div>
+    <hr class="horizontal_line">
+    <div class="vertical-menu">
+        <a class="vertic" href="my_order/"><img src="/static/images/my order (1).png" width="28px"> Мои заказы</a>
+        {% if user.is_superuser %}
+        <a class="vertic" href="my_order/"><img src="/static/images/package.png" width="35px"> Все заказы</a>
+        {% endif %}
+        <hr class="horizontal_line">
+        <a class="vertic" href="{% url 'logout' %}? next=" {{ request.path }}"><img src="/static/images/log-out.png"
+                                                                                    width="30px"> Выход</a>
+    </div>
+
     {% else %}
     <h1>Вход</h1>
     <form method="post" action=''>
         {% csrf_token %}
-        {{ form.as_p  }}
+        {{ form.as_p }}
         <button type="submit">Войти</button>
     </form>
     <p></p>
@@ -28,10 +47,120 @@
 <div id="column-2" class="content">
     <h1>Гардероб - ваше надежное ателье по ремонту одежды!</h1>
     {% include "home/slider.html" %}
+    <h1 class="marg_h1">Наши преимущества</h1>
+    <div class="textcols">
+        <div class="textcols-row">
+            <div class="textcols-item">
+                Гарантируем индивидуальный подход и профессионализма всех этапах работы – от снятия мерок до пошива и
+                подгонки.
+                Мы внимательно относимся к пожеланиям клиента, учитываем особенности фигуры и гарантируем идеальную
+                посадку.
+            </div>
+            <div class="textcols-item">
+                <img src="/static/images/plus_atelier/1.png" width="130px">
+            </div>
+        </div>
+    </div>
+    <div class="textcols">
+        <div class="textcols-row">
+            <div class="textcols-item">
+                <img src="/static/images/plus_atelier/2.png" width="160px">
+            </div>
+            <div class="textcols-item">
+
+                Даже самая качественная одежда со временем может потерять свой первоначальный вид и требовать
+                восстановления.
+
+                Мы предоставляем услуги ремонта и реставрации различных видов трикотажа, работаем с деликатными и
+                сложными тканями.
+            </div>
+        </div>
+    </div>
+    <div class="textcols">
+        <div class="textcols-row">
+            <div class="textcols-item">
+                Мы используем качественные материалы.
+                Дизайнерская одежда из премиальных материалов будет радовать вас много лет и не потеряет презентабельный
+                внешний вид.
+            </div>
+            <div class="textcols-item">
+                <img src="/static/images/plus_atelier/3.png" width="150px">
+            </div>
+        </div>
+    </div>
+    <h1>Программа лояльности</h1>
+    <div class="textcols">
+        <div class="textcols-row">
+            <div class="textcols-item">
+                <img src="/static/images/discount.png" width="160px">
+            </div>
+            <div class="textcols-item">
+                <p align="left">Вступайте в нашу программу лояльности и пользуйтесь преимуществами:</p>
+                <p align="left"> 	&#127873; Накапливайте бонусы </p>
+                <p align="left"> &#127873; Получайте скидки на ремонт одежды </p>
+                <p align="left"> &#127873; Приобретайте материалы премиального качества со скидкой </p>
+            </div>
+        </div>
+    </div>
+
+    <h1>Акции</h1>
+    <div class="col">
+        {% for i in first_column %}
+
+        <div class="item">
+            <a href="{{ i.get_absolute_url }}">
+                <img src="{% if i.image %}{{ i.image.url }}{% else %}{% static 'images/no_images.png' %}{% endif %}"
+                     width="20%"></a>
+
+            <h5>{{ i.name }}</h5>
+
+            <p>{{i.description}}</p>
+            <p><strong>Процент скидки: </strong>{{i.discount}}%</p>
+            <p><strong>Период действия акции </strong> с {{i.start}} по {{i.end}}</p>
+            <p></p>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="col">
+        {% for i in second_column %}
+
+        <div class="item">
+            <a href="{{ i.get_absolute_url }}">
+                <img src="{% if i.image %}{{ i.image.url }}{% else %}{% static 'images/no_images.png' %}{% endif %}"
+                     width="20%"></a>
+
+            <h5>{{ i.name }}</h5>
+            <p>{{i.description}}</p>
+            <p><strong>Процент скидки: </strong>{{i.discount}}%</p>
+            <p><strong>Период действия акции </strong> с {{i.start}} по {{i.end}}</p>
+            <p></p>
+            <p></p>
+        </div>
+
+        {% endfor %}
+    </div>
+    <div class="col">
+        {% for i in third_column %}
+        <div class="item">
+
+            <a href="{{ i.get_absolute_url }}">
+                <img src="{% if i.image %}{{ i.image.url }}{% else %}{% static 'images/no_images.png' %}{% endif %}"
+                     width="20%"></a>
+
+            <h5>{{ i.name }}</h5>
+            <p>{{i.description}}</p>
+            <p><strong>Процент скидки: </strong>{{i.discount}}%</p>
+            <p><strong>Период действия акции </strong> с {{i.start}} по {{i.end}}</p>
+            <p></p>
+        </div>
+
+        {% endfor %}
+    </div>
 
 </div>
 <div id="column-3" class="content">
-    <p>hhh</p>
+    <h1>Отзывы</h1>
+    <p>Пока нет отзывов.</p>
 
 </div>
 

@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div id="column-right" class="content_s_m">
+    <h4>Цены услуг ремонта одежды</h4>
+    <p> Уважаемые клиенты, обратите внимание стоимость материалов не входит в стоимость услуги. Материалы оплачиваются
+        отдельно!</p>
+    <hr class="horizontal_line">
+    {% for i in first_column_services %}
+    <div class="col">
+        <h5>{{ i.service.name }}</h5>
+        <p><strong>Цена услуги: </strong>{{i.cost}} &#8381;</p>
+    </div>
+    {% endfor %}
+
+    {% for i in second_column_services %}
+    <div class="col">
+
+
+        <h5>{{ i.service.name }}</h5>
+        <p><strong>Цена услуги: </strong>{{i.cost}} &#8381;</p>
+    </div>
+
+    {% endfor %}
+
+    {% for i in third_column_services %}
+    <div class="col">
+
+        <h5>{{ i.service.name }}</h5>
+        <p><strong>Цена услуги: </strong>{{i.cost}} &#8381;</p>
+
+
+    </div>
+    {% endfor %}
+</div>
+
+<div id="column-left" class="content_s_m">
+    <h4>Цены материалов</h4>
+    <p> В нашем ателье вы можете приобрести необходимые материалы для ремонта ваших изделий.</p>
+    <hr class="horizontal_line">
+    {% for i in first_column_materials %}
+    <div class="col">
+        <h5>{{ i.material.name }}</h5>
+        <p><strong>Цена услуги: </strong>{{i.cost}} &#8381;</p>
+    </div>
+    {% endfor %}
+
+    {% for i in second_column_materials %}
+    <div class="col">
+
+
+        <h5>{{ i.service.name }}</h5>
+        <p><strong>Цена услуги: </strong>{{i.cost}} &#8381;</p>
+    </div>
+
+    {% endfor %}
+
+    {% for i in third_column_materials %}
+    <div class="col">
+
+        <h5>{{ i.service.name }}</h5>
+        <p><strong>Цена услуги: </strong>{{i.cost}} &#8381;</p>
+
+
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

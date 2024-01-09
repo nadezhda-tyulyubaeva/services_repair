@@ -7,7 +7,6 @@ from .models import *
 
 admin.site.register([Client,
                      Employee,
-                     Material,
                      Materials_accounting_journal,
                      Product_Type,
                      Type_of_pockets,
@@ -21,7 +20,8 @@ admin.site.register([Client,
                      Stock,
                      Product,
                      CustomUser,
-                     Map_of_measurements])
+                     Map_of_measurements,
+                     ])
 
 class Price_list_services_pozitionInline(admin.TabularInline):
     model = Price_list_services_pozition
@@ -57,6 +57,13 @@ class Order_pozitionInline(admin.TabularInline):
 class Order_statusInline(admin.TabularInline):
     model = Order_status
 
+class Material_characteristicsInline(admin.TabularInline):
+    model = Material_characteristics
+
+class MaterialAdmin(admin.ModelAdmin):
+    inlines = [Material_characteristicsInline]
+
+admin.site.register(Material, MaterialAdmin)
 
 
 
