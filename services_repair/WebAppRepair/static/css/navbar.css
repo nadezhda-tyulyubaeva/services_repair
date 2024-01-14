@@ -6,7 +6,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
-
+  background-color: #fcf2f4;
   pointer-events: all;
   display: block;
 

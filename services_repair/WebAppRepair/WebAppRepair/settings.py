@@ -47,7 +47,8 @@ ADMIN_REORDER = (
      'models': ('Repair.Client',
                 'Repair.Order',
                 'Repair.Product',
-                'Repair.Map_of_measurements')
+                'Repair.Map_of_measurements',
+                'Repair.Order_status')
      },
 
     {'app': 'Repair', 'label': 'Справочники',
@@ -65,10 +66,9 @@ ADMIN_REORDER = (
      },
     {'app': 'Repair', 'label': 'Пользователи и группы',
      'models': ('Repair.CustomUser',
-                'Repair.Model_3',
-                'Repair.',)
+                'Repair.CustomGroup',
+                'django.contrib.auth.Group',)
      },
-
 )
 
 # Application definition

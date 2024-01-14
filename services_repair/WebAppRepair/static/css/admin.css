@@ -1,11 +1,11 @@
 #header,.theme-toggle{
-    background: linear-gradient(#cbfdca, #e8ffe8);
+    background: linear-gradient(#f0a1a1, #f0a1a1);
     color: #7f510b;
 }
 
 .theme-toggle svg.theme-icon-when-auto, .theme-toggle svg.theme-icon-when-dark, .theme-toggle svg.theme-icon-when-light {
     fill: var(--header-link-color);
-    color: #cbfdca;
+    color: #f0a1a1;
 }
 
 
@@ -15,12 +15,12 @@
 }
 
 .title-decoration{
-    background-color: #5e775d;
+    background-color: #e7e7e7;
 }
 
 .module caption {
     font-size: 0.8rem;
-    background-color: #98cacb;
+    background-color: #ffdede;
     font-weight: 300;
     letter-spacing: 0.5px;
     text-transform: uppercase;
@@ -39,7 +39,7 @@ table {
 }
 
 div.breadcrumbs {
-    background: #006534;
+    background: #f5dddd;
     padding: 10px 40px;
     border: none;
     color: var(--breadcrumbs-fg);
@@ -54,12 +54,12 @@ div.breadcrumbs a {
     font-size: 0.75rem;
     font-family: 'Arimo', sans-serif;
     font-weight: 300;
-    background: #98cacb;
-    color: #006534;
+    background: #ffefef;
+    color: #0e0e0e;
 }
 
 a.section:link, a.section:visited {
-    color: #006534;
+    color: #0e0e0e;
     text-decoration: none;
     font-style: inherit;
 }
@@ -68,11 +68,11 @@ a.section:link, a.section:visited {
     border: none;
     font-family: 'Arimo', sans-serif;
     font-weight: 400;
-    background: #fccac9;
+    background: #f0a1a1;
 }
 
 .button, input[type=submit], input[type=button], .submit-row input, a.button {
-    background: #cbfdfd;
+    background: #9a9a9a;
     padding: 10px 15px;
     font-family: 'Arimo', sans-serif;
     border: none;
@@ -93,15 +93,15 @@ body{
 }
 
 #branding h1 a:link, #branding h1 a:visited {
-    color: #5e775d;
-    font-family: 'Choco cooky', sans-serif;
+    color: #0e0e0e;
+    font-family: 'Arimo', sans-serif;
     font-style: initial;
-    font-size: 2.75rem;
+    font-size: 2rem;
     vertical-align: hanging;
 }
 
 #header a:link, #header a:visited, #logout-form button {
-    color: #5e775d;
+    color: #0e0e0e;
 }
 
 div.breadcrumbs a {
@@ -111,9 +111,9 @@ div.breadcrumbs a {
 #user-tools, #logout-form button {
     padding: 0;
     font-weight: 300;
-    font-family: 'Choco cooky', sans-serif;
-    color: #5e775d;
-    font-size: 0.85rem;
+    font-family: 'Arimo', sans-serif;
+    color: #0e0e0e;
+    font-size: 0.75rem;
     letter-spacing: 0.5px;
     text-transform: uppercase;
 }

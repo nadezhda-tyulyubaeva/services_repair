@@ -3,7 +3,7 @@
 <nav>
     <ul class="topmenu">
         <li><a href="/ " class="down">Главная</a></li>
-        <li><a href="services_materials/" class="down">Услуги и материалы</a></li>
+        <li><a href="/services_materials/" class="down">Услуги и материалы</a></li>
 
         {% if user.is_superuser %}
         <li>
@@ -12,8 +12,9 @@
         <li>
             <a href="">Отчеты</a>
             <ul class="submenu">
+                <li><a href="/sale_of_materials/">Продажа материалов</a></li>
                 <li><a href="">Остатки материалов</a></li>
-                <li><a href="">Ежедневный отчет</a></li>
+                <li><a href="/daily_report/">Ежедневный отчет</a></li>
                 <li><a href="">Реализованные услуги за месяц</a></li>
                 <li><a href="">Анализ активности пользователей</a></li>
             </ul>

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="content_s_m">
+    <h1>Отчёт по продаже материалов</h1>
+    <form method="GET" action="{% url 'sale_of_materials' %}">
+        <label for="start_date">Начальная дата:</label>
+        <input type="date" id="start_date" name="start_date" required>
+
+        <label for="end_date">Конечная дата:</label>
+        <input type="date" id="end_date" name="end_date" required>
+
+        <button type="submit">Сформировать отчёт</button>
+        <button type="submit" name="export_excel" value="1">Сохранить отчет в Excel</button>
+        <button type="submit" name="export_pdf" value="2">Сохранить отчет в PDF</button>
+    </form>
+    <hr class="horizontal_line">
+    <p></p>
+    <p>В период с {{start_date}} по {{end_date}} были проданы следующие материалы в количестве.</p>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Дата</th>
+            <th>Материал</th>
+            <th>Продано</th>
+            <th>Единица измерения</th>
+            <th>Цена, &#8381;</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for material in materials_r %}
+        <tr>
+            <td>{{ material.order.date }}</td>
+            <td>{{ material.pozition.material.name }} ({{ material.pozition.material.description }})</td>
+            <td><p align="right">{{ material.count }}</p></td>
+            <td><p align="right">{{ material.unit_of_measurement.short_name }}</p></td>
+            <td><p align="right">{{ material.pozition.cost }}</p></td>
+
+        </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

@@ -10,7 +10,7 @@
     {% url opts|admin_urlname:'changelist' as changelist_url %}
     <a href="{% add_preserved_filters changelist_url %}" class="closelink">{% translate 'Close' %}</a>
 {% endif %}
-     {% if custom_button %}
+     {% if generate_a_receipt %}
 <input type="submit" style="float:right;margin-left:8px;" value="Сформировать квитанцию" name="_generate_a_receipt">
 {% endif %}
 {% if show_delete_link and original %}

@@ -28,3 +28,12 @@
     font-family: "Segoe UI";
     display: block;
 }
+
+.col-2 {
+    float: left;
+    width: 40%;
+    margin-top: 7px;
+    margin: 7px;
+    padding: 7px;
+    vertical-align: center;
+}

@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, Group
 
 
 # Create your models here.
@@ -8,6 +8,14 @@ TYPE_MATERIAL = (
     ('Клиента', 'Клиента'),
     ('Ателье', 'Ателье')
     )
+
+class CustomGroup(Group):
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Группа'
+        verbose_name_plural = 'Группы'
 
 class CustomUser(AbstractUser):
     image = models.ImageField(upload_to="images", blank=True, verbose_name='Изображение')
@@ -118,7 +126,7 @@ class Employee(models.Model):
     date_of_dismissal = models.DateField(blank=True, null=True, verbose_name="Дата увольнения")
 
     def __str__(self):
-        return f"{self.user.last_name} {self.user.first_name}"
+        return f"{self.user.last_name} {self.user.first_name} {self.user.middle_name}"
 
     class Meta:
         verbose_name = "Сотрудник"
@@ -247,7 +255,7 @@ class Price_list_material_pozition(models.Model):
     cost = models.DecimalField(max_digits=7, decimal_places=2, blank=True,null=True,verbose_name="Цена материала в прайс-листе, руб.")
     material = models.ForeignKey('Material', on_delete=models.CASCADE, blank=True, null=True, verbose_name="Материал")
     price_list = models.ForeignKey('Price_list_material', on_delete=models.CASCADE, blank=True, null=True, verbose_name="Прайс-лист")
-    employee = models.ForeignKey('Employee', on_delete=models.SET_NULL, blank=True, null=True, verbose_name="Сотрудник")
+
 
     def __str__(self):
         return 'Материал %s: %s (стоимость: %s руб.)' % (self.material.type_material, self.material.name, self.cost)
@@ -301,17 +309,19 @@ class Order(models.Model):
     date_of_the_second_fitting = models.DateField(blank=True, null=True, verbose_name='Дата второй примерки')
     planned_production_date = models.DateField(blank=True, null=True, verbose_name='Плановая дата изготовления')
     actual_production_date = models.DateField(blank=True, null=True, verbose_name='Фактическая дата изготовления')
-    NDS = models.IntegerField(verbose_name="Ставка НДС")
+    NDS = models.IntegerField(verbose_name="Ставка НДС, %")
     client = models.ForeignKey(Client, on_delete=models.SET_NULL, blank=True, null=True, verbose_name="Клиент")
     product = models.ForeignKey(Product, on_delete=models.SET_NULL, blank=True, null=True, verbose_name="Изделие")
-
-
+    employee = models.ForeignKey(Employee, on_delete=models.SET_NULL, blank=True, null=True, verbose_name="Исполнитель")
+    receipt = models.ImageField(upload_to="images", blank=True, null=True, verbose_name='Квитанция')
     def __str__(self):
         return f"Заказ №{self.number} от {self.date} (клиент: {self.client})"
 
     class Meta:
         verbose_name = "Заказ"
         verbose_name_plural = "Заказы"
+
+
 
 class Materials_order(models.Model):
 
@@ -362,11 +372,8 @@ class Order_pozition(models.Model):
 
     @property
     def total_order_cost_with_discount(self):
-        if self.service and self.service.cost:
-            discount = self.stock.discount
-
-        if self.stock and discount is not None:
-            discount_amount = (self.service.cost * discount) / 100
+        if self.service and self.service.cost and self.stock and self.stock.discount:
+            discount_amount = (self.service.cost * self.stock.discount) / 100
             total_cost_with_discount = self.service.cost - discount_amount
             return total_cost_with_discount
         else:

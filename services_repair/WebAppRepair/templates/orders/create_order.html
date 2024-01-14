@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="content_s_m">
+    <h1 align="center">Новый заказ</h1>
+    <hr class="horizontal_line">
+    {% if success_message %}
+    <div class="alert alert-success">
+        {{ success_message }}
+    </div>
+    {% endif %}
+    <form action="#" method="POST">{% csrf_token %}
+        {{ form.as_p }}
+        <div class="button-wrapper">
+            <button type="submit" value="">Создать заказ</button>
+            <!--<input type="submit" value="Создать заказ"> -->
+        </div>
+    </form>
+</div>
+{% endblock %}

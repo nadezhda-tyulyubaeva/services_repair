@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="content_s_m">
+    <h1>Ежедневный отчет администратора</h1>
+    <form method="GET" action="{% url 'daily_report' %}">
+        <label for="day">Выберите день, за который необходимо составить отчет:</label>
+        <input type="date" id="day" name="day" required>
+
+        <button type="submit">Сформировать отчёт</button>
+        <button type="submit" name="export_excel" value="1">Сохранить отчет в Excel</button>
+        <button type="submit" name="export_pdf" value="2">Сохранить отчет в PDF</button>
+    </form>
+    <hr class="horizontal_line">
+    <p></p>
+    <p>Отчет за {{ day }}</p>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Клиент</th>
+            <th>Мастер</th>
+            <th>Услуга</th>
+            <th>Стоимость, &#8381;</th>
+            <th>Стоимость с учетом скидки, &#8381;</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for service in services %}
+        <tr>
+            <td>{{ service.order.client }}</td>
+            <td>{{ service.order.employee }}</td>
+            <td>{{ service.service.service.name }}</td>
+            <td><p align="right">{{ service.service.cost }}</p></td>
+            <td><p align="right">{{ service.total_order_cost_with_discount }}</p></td>
+
+        </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+    <p align="right">Итого: {{ total_cost }} &#8381;</p>
+    <p align="right">Итого с учетом скидки: {{ total_cost_discount }} &#8381;</p>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Клиент</th>
+            <th>Мастер</th>
+            <th>Материал</th>
+            <th>Стоимость, &#8381;</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for material in materials %}
+        <tr>
+            <td>{{ material.order.client }}</td>
+            <td>{{ material.order.employee }}</td>
+            <td>{{ material.pozition.material.name }} ({{ material.pozition.material.description }})</td>
+            <td><p align="right">{{ material.total_cost }}</p></td>
+        </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+    <p align="right">Итого: {{ total_cost_materials }} &#8381;</p>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Заказ</th>
+            <th>Клиент</th>
+            <th>Мастер</th>
+            <th>Стоимость, &#8381;</th>
+            <th>Стоимость с учетом скидки, &#8381;</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for order in orders %}
+
+        <tr>
+            <td>{{ order }}</td>
+            <td>{{ order.client }}</td>
+            <td>{{ order.employee }}</td>
+            <td><p align="right">{{ order.total_cost }}</p></td>
+            <td><p align="right">{{ order.total_cost_discount }}</p></td>
+        </tr>
+
+        {% endfor %}
+
+        </tbody>
+    </table>
+    <p align="right">Итого: {{ total }} &#8381;</p>
+    <p align="right">Итого c учетом скидки: {{ total_discount }} &#8381;</p>
+</div>
+
+{% endblock %}

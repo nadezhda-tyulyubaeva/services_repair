@@ -43,30 +43,102 @@
     <hr class="horizontal_line">
     {% for i in first_column_materials %}
     <div class="col">
-        <h5>{{ i.material.name }}</h5>
-        <p><strong>Цена услуги: </strong>{{i.cost}} &#8381;</p>
+        <div class="col-2">
+            <img
+                    src="{% if i.material.image %}{{ i.material.image.url }}{% else %}{% static 'images/no_images.png' %}{% endif %}"
+                    width="100%">
+        </div>
+        <div class="col-2">
+            <h5>{{ i.material.name }}</h5>
+            <p>{{i.cost}} &#8381;</p>
+        </div>
+
+        <p>{{i.material.description|truncatechars:9}} <a href="#popup">Подробнее</a></p>
+        <div id="popup" class="popup">
+            <div class="popup__body">
+                <div class="popup__content">
+                    <a href="#" class="popup__close">Х</a>
+                    <h3>Материал: {{i.material.name }}</h3>
+                    <hr class="horizontal_line">
+                    <div class="col-2">
+                        <img
+                                src="{% if i.material.image %}{{ i.material.image.url }}{% else %}{% static 'images/no_images.png' %}{% endif %}"
+                                width="80%">
+                    </div>
+                    <div id="column-right">
+                        <p align="left">{{i.material.description}}</p>
+                        <p align="left"><strong>Цена</strong>: {{ i.cost }} &#8381;</p>
+                        <h4>Характеристики материала</h4>
+                        <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Характеристика</th>
+                            <th>Значение характеристики</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for material in materials %}
+                        <tr>
+                            <td>{{ material.name}}</td>
+                            <td>{{ material.value}}</td>
+
+
+                        </tr>
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
     </div>
+
     {% endfor %}
 
     {% for i in second_column_materials %}
     <div class="col">
+        <div class="col-2">
+            <img
+                    src="{% if i.material.image %}{{ i.material.image.url }}{% else %}{% static 'images/no_images.png' %}{% endif %}"
+                    width="100%"></a>
+        </div>
+        <div class="col-2">
+            <h5>{{ i.material.name }}</h5>
+            <p>{{i.cost}} &#8381;</p>
+        </div>
 
+        <p>{{i.material.description|truncatechars:9}} <a href="#" data-toggle="modal" data-target="#materialModal"
+                                                         onclick="fillMaterialModal('оо', '{{ i.cost }}')">Подробнее</a>
+        </p>
 
-        <h5>{{ i.service.name }}</h5>
-        <p><strong>Цена услуги: </strong>{{i.cost}} &#8381;</p>
     </div>
 
     {% endfor %}
 
     {% for i in third_column_materials %}
     <div class="col">
+        <div class="col-2">
+            <img
+                    src="{% if i.material.image %}{{ i.material.image.url }}{% else %}{% static 'images/no_images.png' %}{% endif %}"
+                    width="100%"></a>
+        </div>
+        <div class="col-2">
+            <h5>{{ i.material.name }}</h5>
+            <p>{{i.cost}} &#8381;</p>
+        </div>
 
-        <h5>{{ i.service.name }}</h5>
-        <p><strong>Цена услуги: </strong>{{i.cost}} &#8381;</p>
-
+        <p>{{i.material.description|truncatechars:9}} <a href="#" data-toggle="modal" data-target="#materialModal"
+                                                         onclick="fillMaterialModal('{{ i.material.description }}', '{{ i.cost }}')">Подробнее</a>
+        </p>
 
     </div>
     {% endfor %}
 </div>
+
+<!-- Модальное окно -->
+
 
 {% endblock %}

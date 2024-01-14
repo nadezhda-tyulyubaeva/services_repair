@@ -35,10 +35,19 @@ urlpatterns = [
 
     path('captcha/', include('captcha.urls')),
 
-    path('services_materials/', services_materials, name='services_materials')
+    path('services_materials/', services_materials, name='services_materials'),
 
+    path('sale_of_materials/', sale_of_materials, name='sale_of_materials'),
 
+    path('daily_report/', daily_report, name='daily_report'),
 
+    path('orders/', LoanedOrderAllListView.as_view(), name='all_orders'),
+
+    path('order_search/', order_search, name='order_search'),
+
+    path('create_order/', create_order, name='create_order'),
+    # Другие URL-маршруты
 ]
+
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

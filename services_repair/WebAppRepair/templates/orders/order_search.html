@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="content_s_m">
+    <h1>Поиск заказов</h1>
+
+    <form method="GET" action="{% url 'order_search' %}">
+        <input type="text" name="search_query" placeholder="Введите номер заказа">
+        <button type="submit">Поиск</button>
+    </form>
+
+    <hr>
+
+    <h2>Результаты поиска</h2>
+
+
+    <table class="table">
+        {% if found_orders %}
+        <thead>
+        <tr>
+            <th>Заказ</th>
+            <th>Мастер</th>
+            <th>Статус</th>
+            <th>Плановая дата выполнения</th>
+            <th>Фактическая дата выполнения</th>
+            <th>Комментарий</th>
+        </tr>
+        </thead>
+        {% endif %}
+        <tbody>
+        {% for order in found_orders %}
+
+        <tr>
+            <td>{{ order.order }}</td>
+            <td>{{ order.order.employee }}</td>
+            <td>{{ order.order_status.name }}</td>
+            <td>{{ order.order.planned_production_date }}</td>
+            <td>{{ order.order.actual_production_date }}</td>
+            <td>{{ order.comment }}</td>
+        </tr>
+
+
+        </tbody>
+    </table>
+
+    {% empty %}
+    <p>No orders found</p>
+
+    {% endfor %}
+    <hr class="horizontal_line">
+    <p><a href="/orders/">	&#128281; Назад</a> </p>
+
+</div>
+{% endblock %}

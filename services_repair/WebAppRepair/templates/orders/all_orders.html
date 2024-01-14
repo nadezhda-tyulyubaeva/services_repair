@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="content_s_m">
+    <h1>Все заказы</h1>
+        <form method="GET" action="{% url 'order_search' %}">
+            <input type="text" name="search_query" placeholder="Введите номер заказа">
+            <button type="submit">Искать</button>
+        </form>
+
+
+    <hr class="horizontal_line">
+    <p></p>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Заказ</th>
+            <th>Мастер</th>
+            <th>Статус</th>
+            <th>Плановая дата выполнения</th>
+            <th>Фактическая дата выполнения</th>
+            <th>Подробнее</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for order in all_orders %}
+        <tr>
+            <td>{{ order }}</td>
+            <td>{{ order.employee }}</td>
+            <td>{{ order.latest_status }}</td>
+            <td>{{ order.planned_production_date }}</td>
+            <td>{{ order.actual_production_date }}</td>
+            <td><a href="#">История заказа</a></td>
+        </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+    <hr class="horizontal_line">
+    <p><a href="/admin/Repair/order/add/"> Создать заказ &#10133;</a></p>
+
+
+</div>
+
+{% endblock %}
